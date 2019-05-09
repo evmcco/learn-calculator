@@ -12,8 +12,18 @@ const operatorChars = "+-*/";
 // adding click handlers to number buttons
 number.forEach(function(numbObj){
     numbObj.addEventListener('click',function(){
-        input.innerHTML += this.innerHTML;
-        })
+        if (resultDisplayed === false){
+            input.innerHTML += this.innerHTML;}
+        else if (resultDisplayed === true && (operatorChars.includes(input.innerHTML[input.innerHTML.length-1]))) {
+            resultDisplayed = false;
+            input.innerHTML += this.innerHTML;
+            }
+        else {
+            resultDisplayed = false;
+            input.innerHTML = '';
+            input.innerHTML += this.innerHTML;
+            };
+        });
 });
 // adding click handlers to the operation buttons
 operator.forEach(function(operObj){
